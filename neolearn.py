@@ -74,9 +74,9 @@ def onenter(event):
         next_question()
     else:
         background(color_wrong)
-        print(entry1.get())
-        print(learning_set[current_question][1])
-        print('wrong')
+        correct_text = learning_set[current_question][0] + "=" + learning_set[current_question][1]
+        label1.config(text=correct_text)
+        entry1.delete(0, 'end')
 
 
 # bindings
@@ -84,7 +84,8 @@ root.bind('<Return>', onenter)
 
 # main
 if __name__ == '__main__':
-    label2.config(text='Math Multiplication')
+    # label2.config(text='Math Multiplication')
+    label2.config(text='')
     learning_set = read_file("learning-sets/math-multiplication.txt")
     random.shuffle(learning_set)
     next_question()
